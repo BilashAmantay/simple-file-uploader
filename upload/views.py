@@ -9,13 +9,13 @@ from .forms import *
 def image_upload_view(request):
 
     if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
+        form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            form = ImageUploadForm(request.POST)
+            form = UploadForm(request.POST)
             return render(request, 'upload/index.html', {'form': form})
     else:
-        form = ImageUploadForm()
+        form = UploadForm()
     return render(request, 'upload/index.html', {'form': form})
 
 
